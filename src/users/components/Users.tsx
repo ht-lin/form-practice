@@ -31,8 +31,6 @@ import {
   createUser,
   editUser,
 } from "../utils/storage";
-import { db } from "../../db";
-import { Option } from "../../types/option";
 
 export function Users() {
   const titles = getTitles();
@@ -40,7 +38,6 @@ export function Users() {
   const users = getUsers();
 
   const {
-    watch,
     handleSubmit,
     control,
     formState: { errors },
@@ -51,7 +48,7 @@ export function Users() {
   const fullErrors: FieldErrors<Extract<Schema, { workExperience: true }>> =
     errors;
 
-  const { fields, replace, remove, append } = useFieldArray<Schema>({
+  const { fields, remove, append } = useFieldArray<Schema>({
     control,
     name: "companyAndTimeRange",
   });
